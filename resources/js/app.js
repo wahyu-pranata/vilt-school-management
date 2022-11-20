@@ -5,7 +5,7 @@ import {InertiaProgress} from "@inertiajs/progress";
 InertiaProgress.init()
 
 createInertiaApp({
-    resolve: name => require(`./Pages/${name}`),
+    resolve: name => import(`./Pages/${name}.vue`),
     setup({el, App, props, plugin}) {
         createApp({render: () => h(App, props)})
             .use(plugin)
