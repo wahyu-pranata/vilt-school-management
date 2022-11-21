@@ -14,6 +14,6 @@ label {
     @apply after:content-['*'] after:ml-0.5 after:text-rose-600 after:text-xs
 }
 input {
-    @apply block w-full mt-2 px-3 py-2 font-normal font-light text-sm border border-solid border-slate-600 rounded transition focus:outline-none focus:border-sky-700 focus:ring focus:ring-blue-500
+    @apply block w-full mt-2 px-3 py-2 font-normal font-light text-sm border border-solid border-slate-600 rounded transition focus:outline-none focus:border-sky-700 focus:ring focus:ring-blue-500 placeholder:italic
 }
 </style>
