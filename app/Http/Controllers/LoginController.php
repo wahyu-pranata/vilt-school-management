@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     public function index() {
-        return inertia('Login');
+        return inertia('Login', [
+            'image' => asset('images/login-kid.jpg')
+        ]);
     }
 }
