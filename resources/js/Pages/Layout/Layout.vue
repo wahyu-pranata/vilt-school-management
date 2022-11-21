@@ -7,7 +7,7 @@
                 <li><Link href="/login" class="text-white opacity-80 hover:opacity-100">Login</Link></li>
             </ul>
         </nav>
-        <main class="px-4 py-2">
+        <main>
             <slot/>
         </main>
     </main>
