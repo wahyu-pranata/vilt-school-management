@@ -1,10 +1,12 @@
 <template>
     <main>
-        <header class="flex w-100 justify-center space-x-4 bg-sky-600 py-3">
-            <Link href="/" class="text-white opacity-80 hover:opacity-100">Home</Link>
-            <Link href="/about" class="text-white opacity-80 hover:opacity-100">About</Link>
-            <Link href="/login" class="text-white opacity-80 hover:opacity-100">Login</Link>
-        </header>
+        <nav class="w-100 bg-slate-800 py-3">
+            <ul class="flex justify-center space-x-4">
+                <li><Link href="/" class="text-white opacity-80 hover:opacity-100">Home</Link></li>
+                <li><Link href="/about" class="text-white opacity-80 hover:opacity-100">About</Link></li>
+                <li><Link href="/login" class="text-white opacity-80 hover:opacity-100">Login</Link></li>
+            </ul>
+        </nav>
         <main class="px-4 py-2">
             <slot/>
         </main>
