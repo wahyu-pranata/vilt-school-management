@@ -1,16 +1,17 @@
 <template>
     <Head title="Login Page"></Head>
     <Layout>
-        <div class="flex">
+        <div class="flex relative">
             <section class="flex-1 px-4 py-6">
                 <div class="text-center">
                     <h1 class="text-3xl text-slate-800 font-semibold">Login</h1>
                     <p class="text-sm text-slate-600 font-light mt-1">Access the beautiful of <span class="font-bold">VILT</span> app</p>
+                    <Flash variant="info" v-if="$page.props.flash.message">{{ $page.props.flash.message }}</Flash>
                 </div>
                 <form action="" class="mx-auto mt-2 p-4">
                     <InputForm id="email" type="email" placeholder="example: johndoe@example.com" label-text="Email" />
                     <InputForm id="password" type="password" placeholder="tips: min. 8 character " label-text="Password"/>
-                    <button>Register</button>
+                    <button type="submit">Login</button>
                     <p class="text-center font-light text-sm">Don't have an account? <Link href="/register" class="text-blue-600 font-medium">Register here!</Link></p>
                 </form>
             </section>
@@ -25,6 +26,7 @@ import { Head, Link } from '@inertiajs/inertia-vue3'
 import { computed } from "vue";
 import Layout from './Layout/Layout.vue'
 import InputForm from './Components/InputForm.vue'
+import Flash from './Components/Flash.vue'
 
 const props = defineProps(['image'])
 const bgImage = computed(() => {
