@@ -1,12 +1,13 @@
 <template>
     <div class="mb-3">
         <label :for="id" class="text-left">{{ labelText }}</label>
-        <input :type="type" :id="id" :placeholder="placeholder">
+        <input :type="type" :id="id" :placeholder="placeholder" @input="$emit('update:modelValue', $event.target.value)">
     </div>
 </template>
 
 <script setup>
-const props = defineProps(['id', 'type', 'placeholder', 'labelText'])
+const props = defineProps(['id', 'type', 'placeholder', 'labelText', 'modelValue'])
+defineEmits(['update:modelValue'])
 </script>
 
 <style scoped>
