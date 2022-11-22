@@ -22,11 +22,11 @@ Route::inertia('/about', 'About');
 
 Route::middleware('guest')->group(function() {
     Route::controller(RegisterController::class)->group(function() {
-        Route::get('/register', 'index');
+        Route::get('/register', 'index')->name('register.index');
         Route::post('/register', 'store');
     });
     Route::controller(LoginController::class)->group(function() {
-        Route::get('/login', 'index');
+        Route::get('/login', 'index')->name('login.index');
         Route::post('/login', 'auth');
     });
 });
