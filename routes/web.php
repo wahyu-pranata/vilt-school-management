@@ -30,3 +30,7 @@ Route::middleware('guest')->group(function() {
         Route::post('/login', 'auth');
     });
 });
+
+Route::middleware('auth')->group(function() {
+    Route::post('/logout', [LoginController::class, 'logout']);
+});
