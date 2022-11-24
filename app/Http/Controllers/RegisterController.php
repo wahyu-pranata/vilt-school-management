@@ -21,6 +21,8 @@ class RegisterController extends Controller
             'last_name' => 'required|alpha|max:255',
             'password' => 'required|min:8|confirmed'
         ]);
+        $validatedData['password'] = Hash::make($validatedData['password']);
+
         $user->email = $validatedData['email'];
         $user->first_name = $validatedData['first_name'];
         $user->last_name = $validatedData['last_name'];
