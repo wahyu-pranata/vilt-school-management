@@ -8,9 +8,11 @@
                     <p class="text-sm text-slate-600 font-light mt-1">Access the beautiful of <span class="font-bold">VILT</span> app</p>
                     <Flash variant="info" v-if="$page.props.flash.message">{{ $page.props.flash.message }}</Flash>
                 </div>
-                <form action="" class="mx-auto mt-2 p-4">
-                    <InputForm id="email" type="email" placeholder="example: johndoe@example.com" label-text="Email" />
-                    <InputForm id="password" type="password" placeholder="tips: min. 8 character " label-text="Password"/>
+                <form action="" class="mx-auto mt-2 p-4" @submit.prevent="submit">
+                    <InputForm id="email" type="email" placeholder="example: johndoe@example.com" label-text="Email" v-model="form.email" />
+                    <p class="text-xs font-bold text-rose-700 mb-3" v-if="errors.email">{{ errors.email }}</p>
+                    <InputForm id="password" type="password" placeholder="tips: min. 8 character " label-text="Password" v-model="form.password"/>
+                    <p class="text-xs font-bold text-rose-700 mb-3" v-if="errors.password">{{ errors.password }}</p>
                     <button type="submit">Login</button>
                     <p class="text-center font-light text-sm">Don't have an account? <Link href="/register" class="text-blue-600 font-medium">Register here!</Link></p>
                 </form>
@@ -22,16 +24,26 @@
 </template>
 
 <script setup>
-import { Head, Link } from '@inertiajs/inertia-vue3'
+import { Head, Link, useForm } from '@inertiajs/inertia-vue3'
 import { computed } from "vue";
 import Layout from './Layout/Layout.vue'
 import InputForm from './Components/InputForm.vue'
 import Flash from './Components/Flash.vue'
 
-const props = defineProps(['image'])
+const props = defineProps({
+    image: String,
+    errors: Object
+})
 const bgImage = computed(() => {
     return `background-image: url('${props.image}')`
 })
+const form = useForm({
+    email: null,
+    password: null
+})
+function submit() {
+    form.post('/login');
+}
 </script>
 
 <style scoped>
