@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,15 +23,19 @@ Route::inertia('/about', 'About');
 
 Route::middleware('guest')->group(function() {
     Route::controller(RegisterController::class)->group(function() {
-        Route::get('/register', 'index')->name('register.index');
+        Route::get('/register', 'index')->name('register');
         Route::post('/register', 'store');
     });
     Route::controller(LoginController::class)->group(function() {
-        Route::get('/login', 'index')->name('login.index');
+        Route::get('/login', 'index')->name('login');
         Route::post('/login', 'auth');
     });
 });
 
 Route::middleware('auth')->group(function() {
     Route::post('/logout', [LoginController::class, 'logout']);
+});
+
+Route::middleware(['auth','is_admin'])->group(function() {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
 });
