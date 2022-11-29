@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
 use Illuminate\Http\Request;
 use App\Models\Student;
 
@@ -15,7 +16,8 @@ class StudentDashboardController extends Controller
     public function index()
     {
         return inertia('DashboardStudentIndex', [
-            'students' => Student::paginate(10)
+            'students' => Student::paginate(10),
+            'classes' => Group::all()
         ]);
     }
 

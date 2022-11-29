@@ -3,6 +3,10 @@
     <Layout>
         <div class="mt-4">
             <div class="overflow-x-auto relative px-8">
+                <div class="flex justify-between">
+                    <h1 class="text-2xl font-semibold text-slate-800">Student List</h1>
+                    <Link href="#" class="px-4 py-2 text-white bg-sky-600 rounded hover:bg-sky-700">Add student</Link>
+                </div>
                 <table class="table-fixed w-full text-sm text-left">
                     <tr class="text-xs text-gray-900 uppercase">
                         <th>No.</th>
@@ -14,7 +18,7 @@
                     <tr v-for="student in props.students.data" :key="student.id">
                         <td>{{ student.id }}.</td>
                         <td>{{ student.student_name }}</td>
-                        <td>{{ student.group_id }}</td>
+                        <td>{{ classes[student.group_id].group_name  }}</td>
                         <td>{{ student.dob }}</td>
                         <td class="flex space-x-2">
                             <Link :href="`/dashboard/student/${student.id}/edit`">Edit</Link>
@@ -35,7 +39,8 @@ import Layout from "./Layout/Layout.vue"
 import Pagination from "./Components/Pagination.vue"
 
 const props = defineProps({
-    students: Object
+    students: Object,
+    classes: Object
 })
 
 </script>
@@ -47,7 +52,7 @@ tr {
 th, td {
     @apply px-2 py-4
 }
-a {
+td a {
     @apply first:text-emerald-600 last:text-rose-600 hover:underline
 }
 </style>
