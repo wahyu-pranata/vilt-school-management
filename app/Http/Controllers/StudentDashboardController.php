@@ -28,7 +28,9 @@ class StudentDashboardController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('DashboardStudentCreate', [
+            'classes' => Group::all()
+        ]);
     }
 
     /**
@@ -39,7 +41,19 @@ class StudentDashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $student = new Student;
+        $validatedData = $request->validate([
+           'student_name' => 'required|max:255',
+            'group_id' => 'required',
+            'dob' => 'required|date'
+        ]);
+        $student->student_name = $validatedData['student_name'];
+        $student->group_id = $validatedData['group_id'];
+        $student->dob= $validatedData['dob'];
+
+        $student->save();
+
+        return redirect()->route('student.index')->with('message', 'New student successfully added!');
     }
 
     /**

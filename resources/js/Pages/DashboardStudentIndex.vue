@@ -5,8 +5,9 @@
             <div class="overflow-x-auto relative px-8">
                 <div class="flex justify-between">
                     <h1 class="text-2xl font-semibold text-slate-800">Student List</h1>
-                    <Link href="#" class="px-4 py-2 text-white bg-sky-600 rounded hover:bg-sky-700">Add student</Link>
+                    <Link href="/dashboard/student/create" class="px-4 py-2 text-white bg-sky-600 rounded hover:bg-sky-700">Add student</Link>
                 </div>
+                <Flash variant="info" v-if="$page.props.flash.message">{{ $page.props.flash.message }}</Flash>
                 <table class="table-fixed w-full text-sm text-left">
                     <tr class="text-xs text-gray-900 uppercase">
                         <th>No.</th>
@@ -18,7 +19,7 @@
                     <tr v-for="student in props.students.data" :key="student.id">
                         <td>{{ student.id }}.</td>
                         <td>{{ student.student_name }}</td>
-                        <td>{{ classes[student.group_id].group_name  }}</td>
+                        <td>{{ classes[student.group_id - 1].group_name  }}</td>
                         <td>{{ student.dob }}</td>
                         <td class="flex space-x-2">
                             <Link :href="`/dashboard/student/${student.id}/edit`">Edit</Link>
@@ -37,6 +38,7 @@ import { Head, Link } from "@inertiajs/inertia-vue3"
 import {computed} from "vue";
 import Layout from "./Layout/Layout.vue"
 import Pagination from "./Components/Pagination.vue"
+import Flash from "./Components/Flash.vue"
 
 const props = defineProps({
     students: Object,
