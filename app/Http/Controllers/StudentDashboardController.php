@@ -28,7 +28,7 @@ class StudentDashboardController extends Controller
      */
     public function create()
     {
-        return inertia('DashboardStudentCreate', [
+        return inertia('DashboardStudentForm', [
             'classes' => Group::all()
         ]);
     }
@@ -75,7 +75,7 @@ class StudentDashboardController extends Controller
      */
     public function edit($id)
     {
-        return inertia('DashboardStudentEdit', [
+        return inertia('DashboardStudentForm', [
             'student' => Student::find($id),
             'classes' => Group::all()
         ]);

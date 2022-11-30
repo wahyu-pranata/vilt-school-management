@@ -32,7 +32,7 @@ const props = defineProps({
 
 let form = useForm({
     student_name: props.student ? props.student.student_name : null,
-    group_id: props.student ? props.student.student.group_id : null,
+    group_id: props.student ? props.student.group_id : null,
     dob: props.student ? props.student.dob : null
 })
 

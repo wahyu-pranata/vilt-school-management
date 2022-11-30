@@ -26,7 +26,7 @@ class GroupDashboardController extends Controller
      */
     public function create()
     {
-        return inertia('DashboardGroupCreate');
+        return inertia('DashboardGroupForm');
     }
 
     /**
@@ -48,7 +48,7 @@ class GroupDashboardController extends Controller
 
         $group->save();
 
-        return redirect()->route('class.index')->with('message', 'New class has been added!');
+        return redirect()->route('group.index')->with('message', 'New group has been added!');
     }
 
     /**
@@ -59,7 +59,7 @@ class GroupDashboardController extends Controller
      */
     public function show($id)
     {
-        return inertia('DashboardGroupShow', [
+        return inertia('DashboardGroupCreate', [
             'group' => Group::find($id),
             'students' => Group::find($id)->students
         ]);
@@ -73,7 +73,7 @@ class GroupDashboardController extends Controller
      */
     public function edit($id)
     {
-        return inertia('DashboardGroupEdit', [
+        return inertia('DashboardGroupForm', [
             'group' => Group::find($id)
         ]);
     }
@@ -98,7 +98,7 @@ class GroupDashboardController extends Controller
 
         $group->save();
 
-        return redirect()->route('class.index')->with('message', 'Selected class successfully updated!');
+        return redirect()->route('group.index')->with('message', 'Selected group successfully updated!');
     }
 
     /**
@@ -111,6 +111,6 @@ class GroupDashboardController extends Controller
     {
         Group::find($id)->delete();
 
-        return redirect()->route('class.index')->with('message', 'Selected class successfully deleted!');
+        return redirect()->route('group.index')->with('message', 'Selected group successfully deleted!');
     }
 }

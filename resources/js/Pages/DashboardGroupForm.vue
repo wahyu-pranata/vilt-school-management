@@ -1,11 +1,11 @@
 <template>
-    <Head title="Add New Group"></Head>
+    <Head :title="props.group === undefined ? 'Add Group' : 'Edit Group'"></Head>
     <Layout>
         <div class="mt-4">
             <div class="overflow-x-auto relative px-8">
-                <h1 class="text-2xl font-semibold text-slate-800">Add Group</h1>
+                <h1 class="text-2xl font-semibold text-slate-800">{{ props.group === undefined ? 'Add New Group' : 'Edit Group' }}</h1>
                 <form action="#" method="post" class="mt-4 w-1/2" @submit.prevent="submit">
-                    <InputForm id="group_name" type="text" placeholder="Insert Class name..." label-text="Class Name" v-model="form.group_name" />
+                    <InputForm id="group_name" type="text" placeholder="Insert Group name..." label-text="Class Name" v-model="form.group_name" />
                     <div class="mb-3">
                         <label for="yearLevel">Year Level</label>
                         <select name="year_level" id="yearLevel" v-model="form.year_level">
@@ -35,9 +35,9 @@ let form = useForm({
 
 const submit = () => {
     if(props.group === undefined) {
-        form.post('/dashboard/class')
+        form.post('/dashboard/group')
     } else {
-        form.put(`/dashboard/class/${id}`)
+        form.put(`/dashboard/group/${props.group.id}`)
     }
 }
 </script>

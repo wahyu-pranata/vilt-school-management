@@ -19,7 +19,7 @@
                     <tr v-for="(student, index) in props.students.data" :key="student.id">
                         <td>{{ index + 1 }}.</td>
                         <td>{{ student.student_name }}</td>
-                        <td>{{ classes[student.group_id - 1].group_name  }}</td>
+                        <td>{{ `${classes[student.group_id - 1].group_name} - Year ${classes[student.group_id - 1].year_level}`  }}</td>
                         <td>{{ student.dob }}</td>
                         <td class="flex space-x-2">
                             <Link :href="`/dashboard/student/${student.id}/edit`">Edit</Link>
