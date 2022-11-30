@@ -9,7 +9,7 @@
                     <div class="mb-3">
                         <label for="group">Select Class</label>
                         <select name="group_id" id="group" v-model="form.group_id">
-                            <option v-for="group in classes" :value="group.id" :key="group.id">{{ `${group.group_name} - Year ${group.year_level_id}` }}</option>
+                            <option v-for="group in classes" :value="group.id" :key="group.id">{{ `${group.group_name} - Year ${group.year_level}` }}</option>
                         </select>
                     </div>
                     <InputForm id="dob" type="date" label-text="Student Date of Birth" v-model="form.dob"/>

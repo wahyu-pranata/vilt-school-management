@@ -75,7 +75,10 @@ class StudentDashboardController extends Controller
      */
     public function edit($id)
     {
-        //
+        return inertia('DashboardStudentEdit', [
+            'student' => Student::find($id),
+            'classes' => Group::all()
+        ]);
     }
 
     /**
@@ -87,7 +90,19 @@ class StudentDashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $student = Student::find($id);
+        $validatedData = $request->validate([
+            'student_name' => 'required|max:255',
+            'group_id' => 'required',
+            'dob' => 'required|date'
+        ]);
+        $student->student_name = $validatedData['student_name'];
+        $student->group_id = $validatedData['group_id'];
+        $student->dob= $validatedData['dob'];
+
+        $student->save();
+
+        return redirect()->route('student.index')->with('message', 'Selected student successfully updated!');
     }
 
     /**

@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\YearLevel::class);
             $table->string('group_name');
+            $table->integer('year_level');
+            $table->date('graduated_at')->nullable();
             $table->timestamps();
         });
     }
