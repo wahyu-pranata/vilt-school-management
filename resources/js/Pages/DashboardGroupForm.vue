@@ -20,19 +20,25 @@
 </template>
 
 <script setup>
-import { Head, Link, useForm } from "@inertiajs/inertia-vue3"
+import { Head, useForm } from "@inertiajs/inertia-vue3"
 import Layout from "./Layout/Layout.vue"
 import InputForm from "./Components/InputForm.vue"
 
+const props = defineProps({
+    group: Object
+})
+
 let form = useForm({
-    group_name: null,
-    year_level: null
+    group_name: props.group ? props.group.group_name : null,
+    year_level: props.group ? props.group.year_level : null
 })
-defineProps({
-    classes: Object
-})
+
 const submit = () => {
-    form.post('/dashboard/class')
+    if(props.group === undefined) {
+        form.post('/dashboard/class')
+    } else {
+        form.put(`/dashboard/class/${id}`)
+    }
 }
 </script>
 

@@ -1,9 +1,9 @@
 <template>
-    <Head title="Add New Student"></Head>
+    <Head :title="student ? 'Edit Student' : 'Add New Student'"></Head>
     <Layout>
         <div class="mt-4">
             <div class="overflow-x-auto relative px-8">
-                <h1 class="text-2xl font-semibold text-slate-800">Add Student</h1>
+                <h1 class="text-2xl font-semibold text-slate-800">{{ student ? "Edit Student" : "Add New Student" }}</h1>
                 <form action="#" method="post" class="mt-4 w-1/2" @submit.prevent="submit">
                     <InputForm id="name" type="text" placeholder="Insert student name..." label-text="Student Name" v-model="form.student_name" />
                     <div class="mb-3">
@@ -13,7 +13,7 @@
                         </select>
                     </div>
                     <InputForm id="dob" type="date" label-text="Student Date of Birth" v-model="form.dob"/>
-                    <button type="submit">Create</button>
+                    <button type="submit">{{ student ? "Edit" : "Create" }}</button>
                 </form>
             </div>
         </div>
@@ -25,16 +25,23 @@ import { Head, Link, useForm } from "@inertiajs/inertia-vue3"
 import Layout from "./Layout/Layout.vue"
 import InputForm from "./Components/InputForm.vue"
 
-let form = useForm({
-    student_name: null,
-    group_id: null,
-    dob: null
-})
-defineProps({
+const props = defineProps({
+    student: Object,
     classes: Object
 })
+
+let form = useForm({
+    student_name: props.student ? props.student.student_name : null,
+    group_id: props.student ? props.student.student.group_id : null,
+    dob: props.student ? props.student.dob : null
+})
+
 const submit = () => {
-    form.post('/dashboard/student')
+    if(props.student) {
+        form.put(`/dashboard/student/${props.student.id}`)
+    } else {
+        form.post(`/dashboard/student`)
+    }
 }
 </script>
 
