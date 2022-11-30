@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\Subject::class);
             $table->string('course_name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

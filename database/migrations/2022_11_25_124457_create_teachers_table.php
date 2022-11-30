@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('teacher_name');
             $table->foreignIdFor(\App\Models\Subject::class);
+            $table->string('teacher_name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

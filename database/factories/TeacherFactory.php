@@ -17,7 +17,8 @@ class TeacherFactory extends Factory
     public function definition()
     {
         return [
-            'teacher_name' => ''
+            'subject_id' => fake()->numberBetween(1, 5),
+            'teacher_name' => fake()->name()
         ];
     }
 }

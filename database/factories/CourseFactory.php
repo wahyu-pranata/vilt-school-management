@@ -18,7 +18,7 @@ class CourseFactory extends Factory
     {
         return [
             'subject_id' => fake()->numberBetween(1, 5),
-            'course_name' => fake()->jobTitle()
+            'course_name' => fake()->sentence(2)
         ];
     }
 }
