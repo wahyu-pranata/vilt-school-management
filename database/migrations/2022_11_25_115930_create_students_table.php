@@ -18,7 +18,9 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Group::class);
             $table->string('student_name');
             $table->date('dob');
+            $table->boolean('is_graduated')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
