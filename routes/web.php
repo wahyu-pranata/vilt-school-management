@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GroupDashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
@@ -40,4 +41,5 @@ Route::middleware('auth')->group(function() {
 Route::middleware(['auth','is_admin'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::resource('dashboard/student',StudentDashboardController::class);
+    Route::resource('dashboard/class',GroupDashboardController::class);
 });
