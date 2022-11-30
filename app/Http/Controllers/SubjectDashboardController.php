@@ -26,7 +26,7 @@ class SubjectDashboardController extends Controller
      */
     public function create()
     {
-        return inertia('DashboardSubjectCreate');
+        return inertia('DashboardSubjectForm');
     }
 
     /**
@@ -67,7 +67,7 @@ class SubjectDashboardController extends Controller
      */
     public function edit($id)
     {
-        return inertia('DashboardSubjectCreate', [
+        return inertia('DashboardSubjectForm', [
             'subject' => Subject::find($id)
         ]);
     }
@@ -81,7 +81,15 @@ class SubjectDashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $subject = Subject::find($id);
+        $validatedData = $request->validate([
+            'subject_name' => 'required|max:255'
+        ]);
+
+        $subject->subject_name = $validatedData['subject_name'];
+
+        $subject->save();
+        return redirect()->route('subject.index')->with('message', 'Selected subject has been updated');
     }
 
     /**

@@ -1,12 +1,12 @@
 <template>
-    <Head title="Add New Subject"></Head>
+    <Head :title="subject ? 'Edit Subject' : 'Add New Subject'"></Head>
     <Layout>
         <div class="mt-4">
             <div class="overflow-x-auto relative px-8">
                 <h1 class="text-2xl font-semibold text-slate-800">{{ subject ? 'Edit Subject' : 'Add new Subject' }}</h1>
                 <form action="#" method="post" class="mt-4 w-1/2" @submit.prevent="submit">
                     <InputForm id="subject_name" type="text" placeholder="Insert subject name..." label-text="Subject Name" v-model="form.subject_name" />
-                    <button type="submit">Create</button>
+                    <button type="submit">{{ subject ? 'Edit' : 'Create' }}</button>
                 </form>
             </div>
         </div>
@@ -25,7 +25,11 @@ let form = useForm({
     subject_name: props.subject ? props.subject.subject_name : null
 })
 const submit = () => {
-    form.post('/dashboard/student')
+    if(props.subject) {
+        form.put(`/dashboard/subject/${props.subject.id}`)
+    } else {
+        form.post(`/dashboard/subject`)
+    }
 }
 </script>
 
