@@ -16,14 +16,16 @@
                         <th>D.O.B</th>
                         <th>Action</th>
                     </tr>
-                    <tr v-for="student in props.students.data" :key="student.id">
-                        <td>{{ student.id }}.</td>
+                    <tr v-for="(student, index) in props.students.data" :key="student.id">
+                        <td>{{ index + 1 }}.</td>
                         <td>{{ student.student_name }}</td>
                         <td>{{ classes[student.group_id - 1].group_name  }}</td>
                         <td>{{ student.dob }}</td>
                         <td class="flex space-x-2">
                             <Link :href="`/dashboard/student/${student.id}/edit`">Edit</Link>
-                            <Link href="#">Delete</Link>
+                            <form @submit.prevent="destroy(student.id)">
+                                <button type="submit">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 </table>
@@ -34,6 +36,7 @@
 </template>
 
 <script setup>
+import { Inertia } from "@inertiajs/inertia"
 import { Head, Link } from "@inertiajs/inertia-vue3"
 import {computed} from "vue";
 import Layout from "./Layout/Layout.vue"
@@ -45,6 +48,11 @@ const props = defineProps({
     classes: Object
 })
 
+const destroy = (id) => {
+    if(confirm('Are you sure want to delete this student?')) {
+        Inertia.delete(`/dashboard/student/${id}`)
+    }
+}
 </script>
 
 <style scoped>
@@ -55,6 +63,9 @@ th, td {
     @apply px-2 py-4
 }
 td a {
-    @apply first:text-emerald-600 last:text-rose-600 hover:underline
+    @apply text-emerald-600 hover:underline
+}
+form button {
+    @apply text-rose-600 hover:underline
 }
 </style>

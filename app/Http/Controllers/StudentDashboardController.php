@@ -113,6 +113,8 @@ class StudentDashboardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Student::find($id)->delete();
+
+        return redirect()->route('student.index')->with('message', 'Selected student successfully deleted');
     }
 }
