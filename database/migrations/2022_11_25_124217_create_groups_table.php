@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('year_level');
             $table->date('graduated_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
