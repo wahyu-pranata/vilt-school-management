@@ -18,8 +18,8 @@
             <ul class="flex space-x-4">
                 <li><Link href="/dashboard/student" class="text-white/80 hover:text-white font-light">Student</Link></li>
                 <li><Link href="/dashboard/class" class="text-white/80 hover:text-white font-light">Class</Link></li>
+                <li><Link href="/dashboard/subject" class="text-white/80 hover:text-white font-light">Subject</Link></li>
                 <li><Link href="#" class="text-white/80 hover:text-white font-light">Teacher</Link></li>
-                <li><Link href="#" class="text-white/80 hover:text-white font-light">Course</Link></li>
                 <li><Link href="#" class="text-white/80 hover:text-white font-light">Grade</Link></li>
             </ul>
         </nav>

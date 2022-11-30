@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StudentDashboardController;
+use App\Http\Controllers\SubjectDashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,4 +43,5 @@ Route::middleware(['auth','is_admin'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::resource('dashboard/student',StudentDashboardController::class);
     Route::resource('dashboard/class',GroupDashboardController::class);
+    Route::resource('dashboard/subject',SubjectDashboardController::class);
 });
