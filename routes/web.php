@@ -42,6 +42,6 @@ Route::middleware('auth')->group(function() {
 Route::middleware(['auth','is_admin'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::resource('dashboard/student',StudentDashboardController::class);
-    Route::resource('dashboard/class',GroupDashboardController::class);
+    Route::resource('dashboard/group',GroupDashboardController::class);
     Route::resource('dashboard/subject',SubjectDashboardController::class);
 });
