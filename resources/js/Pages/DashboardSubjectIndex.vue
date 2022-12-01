@@ -18,7 +18,7 @@
                         <td>{{ index+1 }}</td>
                         <td>{{ subject.subject_name }}</td>
                         <td class="flex space-x-2">
-                            <Link :href="`/dashboard/subject/${subject.id}`">Show</Link>
+                            <Link :href="`/dashboard/subject/${subject.id}`">Courses</Link>
                             <Link :href="`/dashboard/subject/${subject.id}/edit`">Edit</Link>
                             <form @submit.prevent="destroy(subject.id)">
                                 <button type="submit">Delete</button>

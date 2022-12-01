@@ -56,7 +56,10 @@ class SubjectDashboardController extends Controller
      */
     public function show($id)
     {
-
+        return inertia('DashboardSubjectShow', [
+            'subject' => Subject::find($id),
+            'courses' => Subject::find($id)->courses
+        ]);
     }
 
     /**
