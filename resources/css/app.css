@@ -7,3 +7,6 @@
 * {
     @apply font-noto
 }
+table {
+    @apply mb-4
+}
