@@ -19,7 +19,7 @@
                 <li><Link href="/dashboard/student" class="text-white/80 hover:text-white font-light">Student</Link></li>
                 <li><Link href="/dashboard/group" class="text-white/80 hover:text-white font-light">Group</Link></li>
                 <li><Link href="/dashboard/subject" class="text-white/80 hover:text-white font-light">Subject</Link></li>
-                <li><Link href="#" class="text-white/80 hover:text-white font-light">Teacher</Link></li>
+                <li><Link href="/dashboard/teacher" class="text-white/80 hover:text-white font-light">Teacher</Link></li>
                 <li><Link href="#" class="text-white/80 hover:text-white font-light">Grade</Link></li>
             </ul>
         </nav>
