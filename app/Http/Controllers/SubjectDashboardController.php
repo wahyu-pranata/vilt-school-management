@@ -15,7 +15,7 @@ class SubjectDashboardController extends Controller
     public function index()
     {
         return inertia('DashboardSubjectIndex', [
-            'subjects' => Subject::all()
+            'subjects' => Subject::paginate(15)
         ]);
     }
 
@@ -56,7 +56,7 @@ class SubjectDashboardController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -100,6 +100,8 @@ class SubjectDashboardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Subject::find($id)->delete();
+
+        return back()->with('message', 'Selected subject has been deleted');
     }
 }

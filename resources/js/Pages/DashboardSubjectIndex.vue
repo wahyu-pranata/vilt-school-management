@@ -14,7 +14,7 @@
                         <th>Subject Name</th>
                         <th>Action</th>
                     </tr>
-                    <tr v-for="(subject, index) in subjects" :key="subject.id">
+                    <tr v-for="(subject, index) in subjects.data" :key="subject.id">
                         <td>{{ index+1 }}</td>
                         <td>{{ subject.subject_name }}</td>
                         <td class="flex space-x-2">
@@ -26,6 +26,7 @@
                         </td>
                     </tr>
                 </table>
+                <Pagination class="my-4" :links="subjects.links"/>
             </div>
         </div>
     </Layout>
@@ -42,8 +43,10 @@ const props = defineProps({
     subjects: Object
 })
 
-const destroy = () => {
-
+const destroy = (id) => {
+    if(confirm("Are you sure want  to delete this subject?")) {
+        Inertia.delete(`/dashboard/subject/${id}`)
+    }
 }
 
 </script>
