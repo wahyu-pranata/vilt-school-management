@@ -1,5 +1,5 @@
 <template>
-    <Head title="Class List"></Head>
+    <Head title="Group Detail"></Head>
     <Layout>
         <div class="mt-4">
             <div class="overflow-x-auto relative px-8">
@@ -32,10 +32,8 @@
 
 <script setup>
 import { Inertia } from "@inertiajs/inertia"
-import { Head, Link } from "@inertiajs/inertia-vue3"
-import {computed} from "vue";
+import { Head } from "@inertiajs/inertia-vue3"
 import Layout from "./Layout/Layout.vue"
-import Pagination from "./Components/Pagination.vue"
 import Flash from "./Components/Flash.vue"
 
 const props = defineProps({

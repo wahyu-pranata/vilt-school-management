@@ -7,7 +7,7 @@
                 <form action="#" method="post" class="mt-4 w-1/2" @submit.prevent="submit">
                     <InputForm id="name" type="text" placeholder="Insert student name..." label-text="Student Name" v-model="form.student_name" />
                     <div class="mb-3">
-                        <label for="group">Select Class</label>
+                        <label for="group">Select Group</label>
                         <select name="group_id" id="group" v-model="form.group_id">
                             <option v-for="group in classes" :value="group.id" :key="group.id">{{ `${group.group_name} - Year ${group.year_level}` }}</option>
                         </select>

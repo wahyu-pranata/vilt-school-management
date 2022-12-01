@@ -12,7 +12,7 @@
                     <tr class="text-xs text-gray-900 uppercase">
                         <th>No.</th>
                         <th>Name</th>
-                        <th>Class</th>
+                        <th>Group</th>
                         <th>D.O.B</th>
                         <th>Action</th>
                     </tr>

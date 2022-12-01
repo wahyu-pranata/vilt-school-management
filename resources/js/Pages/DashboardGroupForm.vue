@@ -5,7 +5,7 @@
             <div class="overflow-x-auto relative px-8">
                 <h1 class="text-2xl font-semibold text-slate-800">{{ props.group === undefined ? 'Add New Group' : 'Edit Group' }}</h1>
                 <form action="#" method="post" class="mt-4 w-1/2" @submit.prevent="submit">
-                    <InputForm id="group_name" type="text" placeholder="Insert Group name..." label-text="Class Name" v-model="form.group_name" />
+                    <InputForm id="group_name" type="text" placeholder="Insert Group name..." label-text="Group Name" v-model="form.group_name" />
                     <div class="mb-3">
                         <label for="yearLevel">Year Level</label>
                         <select name="year_level" id="yearLevel" v-model="form.year_level">

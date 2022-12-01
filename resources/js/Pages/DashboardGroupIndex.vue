@@ -1,11 +1,11 @@
 <template>
-    <Head title="Class List"></Head>
+    <Head title="Group List"></Head>
     <Layout>
         <div class="mt-4">
             <div class="overflow-x-auto relative px-8">
                 <div class="flex justify-between">
-                    <h1 class="text-2xl font-semibold text-slate-800">Class List</h1>
-                    <Link href="/dashboard/class/create" class="px-4 py-2 text-white bg-sky-600 rounded hover:bg-sky-700">Add new class</Link>
+                    <h1 class="text-2xl font-semibold text-slate-800">Group List</h1>
+                    <Link href="/dashboard/group/create" class="px-4 py-2 text-white bg-sky-600 rounded hover:bg-sky-700">Add new group</Link>
                 </div>
                 <Flash variant="info" v-if="$page.props.flash.message">{{ $page.props.flash.message }}</Flash>
                 <table class="table-fixed w-full text-sm text-left">
@@ -20,8 +20,8 @@
                         <td>{{ group.group_name }}</td>
                         <td>{{ group.year_level }}</td>
                         <td class="flex space-x-2">
-                            <Link :href="`/dashboard/class/${group.id}`">Show</Link>
-                            <Link :href="`/dashboard/class/${group.id}/edit`">Edit</Link>
+                            <Link :href="`/dashboard/group/${group.id}`">Show</Link>
+                            <Link :href="`/dashboard/group/${group.id}/edit`">Edit</Link>
                             <form @submit.prevent="destroy(group.id)">
                                 <button type="submit">Delete</button>
                             </form>
@@ -47,8 +47,8 @@ const props = defineProps({
 })
 
 const destroy = (id) => {
-    if(confirm('Are you sure want to delete this class?')) {
-        Inertia.delete(`/dashboard/class/${id}`)
+    if(confirm('Are you sure want to delete this group?')) {
+        Inertia.delete(`/dashboard/group/${id}`)
     }
 }
 </script>
