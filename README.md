@@ -1,2 +1,2 @@
-## This is VILT-stack application
-VILT stands for **Vue-Inertia-Laravel-Tailwind**
+## VILT School Management
+I tried to make school management system using Vue.js, Inertia, and Laravel. With Tailwind CSS for styling
