@@ -15,9 +15,12 @@ class StudentDashboardController extends Controller
      */
     public function index()
     {
-        return inertia('DashboardStudentIndex', [
-            'students' => Student::paginate(50),
-            'classes' => Group::all()
+        return inertia('DashboardIndex', [
+            'name' => 'student',
+            'data' => Student::paginate(50),
+            'classes' => Group::all(),
+            'columns' => ['id', 'group', 'name', 'd.o.b', 'action'],
+            'actions' => ['show', 'edit']
         ]);
     }
 

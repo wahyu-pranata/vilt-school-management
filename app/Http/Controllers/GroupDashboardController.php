@@ -14,8 +14,11 @@ class GroupDashboardController extends Controller
      */
     public function index()
     {
-        return inertia('DashboardGroupIndex', [
-            'groups' => Group::paginate(10)
+        return inertia('DashboardIndex', [
+            'name' => 'group',
+            'data' => Group::paginate(50),
+            'columns' => ['id', 'group name', 'year level', 'action'],
+            'actions' => ['show', 'edit']
         ]);
     }
 

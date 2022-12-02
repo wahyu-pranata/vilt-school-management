@@ -15,9 +15,11 @@ class TeacherDashboardController extends Controller
      */
     public function index()
     {
-        return inertia('DashboardTeacherIndex', [
-            'teachers' => Teacher::paginate(20),
-            'subjects' => Subject::all()
+        return inertia('DashboardIndex', [
+            'name' => 'teacher',
+            'data' => Teacher::paginate(25),
+            'columns' => ['id', 'teacher name', 'action'],
+            'actions' => ['edit']
         ]);
     }
 

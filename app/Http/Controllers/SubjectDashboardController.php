@@ -14,8 +14,11 @@ class SubjectDashboardController extends Controller
      */
     public function index()
     {
-        return inertia('DashboardSubjectIndex', [
-            'subjects' => Subject::paginate(15)
+        return inertia('DashboardIndex', [
+            'name' => 'subject',
+            'data' => Subject::paginate(50),
+            'columns' => ['id', 'subject name', 'action'],
+            'actions' => ['show', 'edit']
         ]);
     }
 
