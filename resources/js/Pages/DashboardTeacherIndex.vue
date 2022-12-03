@@ -11,12 +11,14 @@
                 <table class="table-fixed w-full text-sm text-left">
                     <tr class="text-xs text-gray-900 uppercase">
                         <th>No.</th>
-                        <th>Name</th>
+                        <th>Teacher Name</th>
+                        <th>Subject</th>
                         <th>Action</th>
                     </tr>
                     <tr v-for="(teacher, index) in teachers.data" :key="teacher.id">
                         <td>{{ index + 1 }}.</td>
                         <td>{{ teacher.teacher_name }}</td>
+                        <td>{{ subjects[teacher.subject_id].subject_name }}</td>
                         <td class="flex space-x-2">
                             <Link :href="`/dashboard/student/${teacher.id}/edit`">Edit</Link>
                             <form @submit.prevent="destroy(teacher.id)">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Subject;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TeacherDashboardController extends Controller
 {
@@ -16,7 +17,9 @@ class TeacherDashboardController extends Controller
     public function index()
     {
         return inertia('DashboardTeacherIndex', [
-            'teachers' => Teacher::paginate(20),
+            'teachers' => DB::table('teachers')
+                            ->whereRaw('subject_id IN (SELECT `id` FROM `subjects` WHERE `deleted_at` IS NULL)')
+                            ->paginate(20),
             'subjects' => Subject::all()
         ]);
     }
