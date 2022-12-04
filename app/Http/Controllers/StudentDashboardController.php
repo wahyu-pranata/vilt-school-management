@@ -64,7 +64,11 @@ class StudentDashboardController extends Controller
      */
     public function show($id)
     {
-        //
+        $student = Student::find($id);
+        return inertia('DashboardStudentShow', [
+            'student' => $student,
+            'group' => $student->group
+        ]);
     }
 
     /**

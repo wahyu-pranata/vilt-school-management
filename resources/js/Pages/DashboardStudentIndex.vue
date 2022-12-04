@@ -12,16 +12,16 @@
                     <tr class="text-xs text-gray-900 uppercase">
                         <th>No.</th>
                         <th>Name</th>
-                        <th>Group</th>
                         <th>D.O.B</th>
                         <th>Action</th>
                     </tr>
+                    
                     <tr v-for="(student, index) in props.students.data" :key="student.id">
                         <td>{{ index + 1 }}.</td>
                         <td>{{ student.student_name }}</td>
-                        <td>{{ `${classes[student.group_id - 1].group_name} - Year ${classes[student.group_id - 1].year_level}`  }}</td>
                         <td>{{ student.dob }}</td>
                         <td class="flex space-x-2">
+                            <Link :href="`/dashboard/student/${student.id}`">Details</Link>
                             <Link :href="`/dashboard/student/${student.id}/edit`">Edit</Link>
                             <form @submit.prevent="destroy(student.id)">
                                 <button type="submit">Delete</button>
@@ -63,7 +63,7 @@ th, td {
     @apply px-2 py-4
 }
 td a {
-    @apply text-emerald-600 hover:underline
+    @apply odd:text-sky-600 even:text-emerald-600 hover:underline
 }
 form button {
     @apply text-rose-600 hover:underline
