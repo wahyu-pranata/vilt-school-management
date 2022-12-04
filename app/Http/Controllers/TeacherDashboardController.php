@@ -17,10 +17,7 @@ class TeacherDashboardController extends Controller
     public function index()
     {
         return inertia('DashboardTeacherIndex', [
-            'teachers' => DB::table('teachers')
-                            ->whereRaw('subject_id IN (SELECT `id` FROM `subjects` WHERE `deleted_at` IS NULL)')
-                            ->paginate(20),
-            'subjects' => Subject::all()
+            'teachers' => Teacher::all()
         ]);
     }
 
@@ -31,7 +28,9 @@ class TeacherDashboardController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('DashboardTeacherForm', [
+            'subjects' => Subject::all()
+        ]);
     }
 
     /**
@@ -42,7 +41,17 @@ class TeacherDashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $teacher = new Teacher;
+        $validatedData = $request->validate([
+            'teacher_name' => 'required|max:255',
+            'subject_id' => 'required'
+        ]);
+        
+        $teacher->teacher_name = $request->teacher_name;
+        $teacher->subject_id = $request->subject_id;
+        $teacher->save();
+
+        return redirect()->route('teacher.index')->with('message', 'New teacher has been added');
     }
 
     /**
